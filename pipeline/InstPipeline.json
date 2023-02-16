@@ -587,16 +587,9 @@
 				]
 			},
 			{
-				"name": "Copy data1",
+				"name": "LogicDeleteTarget",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "CopySourceInstData",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -608,7 +601,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzurePostgreSqlSource",
-						"query": "select inst_code , case when etl_is_delete then 1 else 0 end is_delete  from dm_d_inst",
+						"query": "select inst_code , case when etl_is_delete then 0 else 1 end is_delete  from dm_d_inst",
 						"partitionOption": "None"
 					},
 					"sink": {
@@ -641,9 +634,9 @@
 							},
 							{
 								"source": {
-									"name": "etl_is_delete",
-									"type": "Boolean",
-									"physicalType": "boolean"
+									"name": "is_delete",
+									"type": "Int32",
+									"physicalType": "integer"
 								},
 								"sink": {
 									"name": "is_delete",
