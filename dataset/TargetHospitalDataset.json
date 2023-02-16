@@ -1,0 +1,180 @@
+{
+	"name": "TargetHospitalDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TargetLinkService",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "target"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "inst_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_name",
+				"type": "nvarchar"
+			},
+			{
+				"name": "province_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "city_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "county_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "websit",
+				"type": "nvarchar"
+			},
+			{
+				"name": "telephone",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_grade",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_grade_level",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type_l1",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type_l2",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type_l3",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type_l4",
+				"type": "nvarchar"
+			},
+			{
+				"name": "county_flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "cold_chain",
+				"type": "nvarchar"
+			},
+			{
+				"name": "tnpr_flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "nhc_certify",
+				"type": "nvarchar"
+			},
+			{
+				"name": "register_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "deregister_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "close_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "operation_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "status_provided_by_retail",
+				"type": "nvarchar"
+			},
+			{
+				"name": "validate_status",
+				"type": "nvarchar"
+			},
+			{
+				"name": "validate_time",
+				"type": "nvarchar"
+			},
+			{
+				"name": "validate_result",
+				"type": "nvarchar"
+			},
+			{
+				"name": "is_active",
+				"type": "nvarchar"
+			},
+			{
+				"name": "active_desc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "status",
+				"type": "text"
+			},
+			{
+				"name": "postcode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "business_scope",
+				"type": "nvarchar"
+			},
+			{
+				"name": "uscc",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gps_x",
+				"type": "nvarchar"
+			},
+			{
+				"name": "gps_y",
+				"type": "nvarchar"
+			},
+			{
+				"name": "address",
+				"type": "nvarchar"
+			},
+			{
+				"name": "township_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "inst_type_l2_code",
+				"type": "nvarchar"
+			},
+			{
+				"name": "economic_type",
+				"type": "nvarchar"
+			},
+			{
+				"name": "military_flag",
+				"type": "nvarchar"
+			},
+			{
+				"name": "medicare_flag",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "hospital"
+		}
+	}
+}
