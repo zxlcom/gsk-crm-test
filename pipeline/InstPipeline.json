@@ -18,13 +18,14 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzurePostgreSqlSource",
-						"query": "select * from dm_d_inst",
+						"query": "SELECT \n\tinst_code, \n\tinst_name, \n\tprovince_code, \n\tcity_code, \n\tcounty_code, \n\twebsit, \n\ttelephone, \n\tinst_grade, \n\tinst_grade_level, \n\tinst_type, \n\tinst_type_l1, \n\tinst_type_l2, \n\tinst_type_l3, \n\tinst_type_l4, \n\tcounty_flag, \n\tcold_chain, \n\ttnpr_flag, \n\tnhc_certify, \n\tregister_time, \n\tderegister_time, \n\tclose_time, \n\toperation_status, \n\tstatus_provided_by_retail, \n\tvalidate_status, \n\tvalidate_time, \n\tvalidate_result, \n\tis_active, \n\tactive_desc, \n\tstatus, \n\tpostcode, \n\tbusiness_scope, \n\tuscc, \n\tgps_x, \n\tgps_y, \n\taddress, \n\ttownship_code, \n\tinst_type_l2_code, \n\teconomic_type, \n\tmilitary_flag, \n\tmedicare_flag,\n\tmd5(concat_ws(',', inst_code, inst_name, province_code, city_code, county_code, websit, telephone, inst_grade, inst_grade_level, inst_type, inst_type_l1, inst_type_l2, inst_type_l3, inst_type_l4, county_flag, cold_chain, tnpr_flag, nhc_certify, register_time, deregister_time, close_time, operation_status, status_provided_by_retail, validate_status, validate_time, validate_result, is_active, active_desc, status, postcode, business_scope, uscc, gps_x, gps_y, address, township_code, inst_type_l2_code, economic_type, military_flag, medicare_flag)) md5_check\nfrom dm_d_inst ddi \nwhere inst_type_l1 = '医疗机构' and inst_type_l2 = '医院';",
 						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzurePostgreSQLSink",
 						"writeBatchSize": 1000000,
 						"writeBatchTimeout": "00:30:00",
+						"preCopyScript": "truncate table dm_d_inst",
 						"writeMethod": "CopyCommand"
 					},
 					"enableStaging": false,
