@@ -608,7 +608,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzurePostgreSqlSource",
-						"query": "select inst_code , etl_is_delete from dm_d_inst ddi",
+						"query": "select inst_code , case when etl_is_delete then 1 else 0 end is_delete  from dm_d_inst",
 						"partitionOption": "None"
 					},
 					"sink": {
