@@ -4,7 +4,7 @@
 		"description": "同步 dm_d_inst 中医院数据",
 		"activities": [
 			{
-				"name": "CopyInstData",
+				"name": "CopySourceInstData",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -56,7 +56,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "CopyInstData",
+						"activity": "CopySourceInstData",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -77,19 +77,495 @@
 					},
 					"sink": {
 						"type": "AzureSqlSink",
-						"writeBehavior": "upsert",
-						"upsertSettings": {
-							"useTempDB": true,
-							"keys": [
-								"inst_code"
-							]
-						},
+						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "inst_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_name",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_name",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "province_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "province_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "city_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "city_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "county_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "county_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "websit",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "websit",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "telephone",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "telephone",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_grade",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_grade",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_grade_level",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_grade_level",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type_l1",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type_l1",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type_l2",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type_l2",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type_l3",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type_l3",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type_l4",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type_l4",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "county_flag",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "county_flag",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "cold_chain",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "cold_chain",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "tnpr_flag",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "tnpr_flag",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "nhc_certify",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "nhc_certify",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "register_time",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "register_time",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "deregister_time",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "deregister_time",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "close_time",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "close_time",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "operation_status",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "operation_status",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "status_provided_by_retail",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "status_provided_by_retail",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "validate_status",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "validate_status",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "validate_time",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "validate_time",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "validate_result",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "validate_result",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "is_active",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "is_active",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "active_desc",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "active_desc",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "status",
+									"type": "String",
+									"physicalType": "text"
+								},
+								"sink": {
+									"name": "status",
+									"type": "String",
+									"physicalType": "text"
+								}
+							},
+							{
+								"source": {
+									"name": "postcode",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "postcode",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "business_scope",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "business_scope",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "uscc",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "uscc",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "gps_x",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "gps_x",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "gps_y",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "gps_y",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "address",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "address",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "township_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "township_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "inst_type_l2_code",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "inst_type_l2_code",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "economic_type",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "economic_type",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "military_flag",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "military_flag",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							},
+							{
+								"source": {
+									"name": "medicare_flag",
+									"type": "String",
+									"physicalType": "character varying"
+								},
+								"sink": {
+									"name": "medicare_flag",
+									"type": "String",
+									"physicalType": "nvarchar"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
