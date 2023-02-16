@@ -5,6 +5,9 @@
 			"referenceName": "SourceLinkService",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "source"
+		},
 		"annotations": [],
 		"type": "AzurePostgreSqlTable",
 		"schema": []
