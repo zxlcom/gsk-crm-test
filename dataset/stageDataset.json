@@ -1,0 +1,15 @@
+{
+	"name": "stageDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "StageLinkService",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "stage"
+		},
+		"annotations": [],
+		"type": "AzurePostgreSqlTable",
+		"schema": []
+	}
+}
