@@ -1,0 +1,15 @@
+{
+	"name": "targetDataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "TargetLinkService",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "target"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
